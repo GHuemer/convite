@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Convite Especial</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Lora', serif;
+            background-color: #3b0918; /* Bordô escuro */
+            overflow: hidden; 
+            touch-action: pan-y;
+            margin: 0;
+        }
+
+        h1, h2, .serif-title {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Estilo do Cardápio Físico */
+        .menu-card {
+            background-color: #fdfaf5; /* Cor de pergaminho/creme */
+            color: #3d2314; /* Marrom escuro */
+            border: 2px solid #8b5a2b; /* Borda marrom/dourada */
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+            position: relative;
+        }
+
+        /* Borda interna dupla do cardápio */
+        .menu-card::before {
+            content: '';
+            position: absolute;
+            top: 6px; bottom: 6px; left: 6px; right: 6px;
+            border: 1px solid #c19a6b;
+            pointer-events: none;
+        }
+
+        /* Corações Animados no Fundo */
+        @keyframes float {
+            0% { transform: translateY(10vh) scale(0.5); opacity: 0; }
+            20% { opacity: 0.6; }
+            80% { opacity: 0.6; }
+            100% { transform: translateY(-110vh) scale(1.5); opacity: 0; }
+        }
+
+        .heart {
+            position: absolute;
+            bottom: -20px;
+            opacity: 0;
+            animation-name: float;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+
+        /* Animação do botão SIM */
+        @keyframes pulse-romantic {
+            0% { box-shadow: 0 0 0 0 rgba(110, 20, 35, 0.4); transform: scale(1); }
+            50% { box-shadow: 0 0 15px 5px rgba(110, 20, 35, 0.2); transform: scale(1.03); }
+            100% { box-shadow: 0 0 0 0 rgba(110, 20, 35, 0); transform: scale(1); }
+        }
+
+        .btn-yes {
+            background-color: #6e1423; /* Vermelho vinho */
+            color: #fdfaf5;
+            animation: pulse-romantic 2.5s infinite;
+            transition: all 0.3s ease;
+        }
+
+        .btn-yes:active {
+            transform: scale(0.95);
+        }
+
+        /* Botão NÃO */
+        #btn-no {
+            transition: top 0.2s ease, left 0.2s ease;
+            z-index: 50;
+            background-color: #fdfaf5;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4 relative">
+
+    <!-- Container dos Corações Animados -->
+    <div id="hearts-container" class="absolute inset-0 overflow-hidden pointer-events-none z-0"></div>
+
+    <!-- Container Principal do Cardápio -->
+    <main id="invite-card" class="menu-card w-full max-w-sm rounded-sm p-8 z-10 transition-opacity duration-700">
+        
+        <!-- Cabeçalho -->
+        <header class="text-center mb-5 mt-2">
+            <h1 class="text-3xl font-bold text-[#6e1423] uppercase tracking-widest mb-4">Convite Especial</h1>
+            <p class="text-sm leading-relaxed italic">
+                Oi <strong class="font-bold not-italic">Manuela</strong>, tudo bem?<br>
+                Tenho uma proposta formal e irrecusável para você: <br>
+                <strong class="serif-title text-[#6e1423] text-xl not-italic mt-3 block">Aceita vir dormir na minha casa hoje?</strong>
+            </p>
+        </header>
+
+        <!-- Divisor Elegante -->
+        <div class="flex items-center justify-center mb-5">
+            <div class="h-px bg-[#c19a6b] w-12"></div>
+            <span class="mx-3 text-[#c19a6b] text-xl">❦</span>
+            <div class="h-px bg-[#c19a6b] w-12"></div>
+        </div>
+
+        <!-- Seção 1: O Cardápio de Atividades -->
+        <section class="mb-5 text-center">
+            <h2 class="text-sm text-[#8b5a2b] uppercase tracking-widest font-bold mb-3 border-b border-[#c19a6b] inline-block pb-1">O Cardápio de Atividades</h2>
+            <div class="text-sm space-y-3">
+                <p><strong class="text-[#6e1423]">Entrada:</strong><br> Assistir a um filme <br><span class="text-xs italic text-gray-600">(ou pelo menos fingir que estamos prestando atenção).</span></p>
+                <p><strong class="text-[#6e1423]">Destaque da Noite:</strong><br> Dormir de conchinha padrão ouro.</p>
+            </div>
+        </section>
+
+        <!-- Seção 2: A Grande Estrela -->
+        <section class="mb-5 text-center">
+            <h2 class="text-sm text-[#8b5a2b] uppercase tracking-widest font-bold mb-2 border-b border-[#c19a6b] inline-block pb-1">A Grande Estrela <span class="lowercase italic font-normal text-xs">(Amanhã)</span></h2>
+            <p class="text-sm font-semibold">O famoso e inigualável<br>Fettuccine ao Molho de Salmão.</p>
+        </section>
+
+        <!-- Seção 3: Atividades Extras -->
+        <section class="mb-8 text-center">
+            <h2 class="text-sm text-[#8b5a2b] uppercase tracking-widest font-bold mb-2 border-b border-[#c19a6b] inline-block pb-1">Atividades Extras <span class="lowercase italic font-normal text-xs">(Amanhã)</span></h2>
+            <ul class="text-sm space-y-1">
+                <li>Caminhar na USP</li>
+                <li>Treinar juntos</li>
+                <li>Gravar TikTok</li>
+                <li>Comer bolo do Seu Noura</li>
+            </ul>
+        </section>
+
+        <!-- Botões de Ação -->
+        <div class="flex flex-col gap-3 relative z-20" id="button-container">
+            <button id="btn-yes" class="btn-yes w-full py-3 rounded-sm font-bold text-sm uppercase tracking-widest cursor-pointer border border-[#4a0e17]">
+                Sim, eu quero!
+            </button>
+            <button id="btn-no" class="border border-[#8b5a2b] text-[#8b5a2b] w-full py-3 rounded-sm font-bold text-sm cursor-pointer uppercase tracking-widest">
+                Não
+            </button>
+        </div>
+    </main>
+
+    <!-- Mensagem de Sucesso (Oculta inicialmente) -->
+    <div id="success-message" class="hidden absolute inset-0 z-30 flex flex-col items-center justify-center p-6 text-center opacity-0 transition-opacity duration-700 bg-[#3b0918]">
+        <div class="text-7xl mb-6 drop-shadow-lg">🍷✨</div>
+        <h2 class="text-4xl font-bold text-[#fdfaf5] mb-4 serif-title italic">Reserva confirmada!</h2>
+        <p class="text-xl text-[#c19a6b]">Te espero. ❤️</p>
+    </div>
+
+    <!-- Lógica JavaScript -->
+    <script>
+        // Criar corações flutuantes ao fundo
+        function createHearts() {
+            const container = document.getElementById('hearts-container');
+            const colors = ['#6e1423', '#a41623', '#5a0c13', '#c19a6b']; // Tons de vinho, vermelho e dourado
+            
+            for(let i = 0; i < 25; i++) {
+                let heart = document.createElement('div');
+                heart.innerHTML = '❤';
+                heart.className = 'heart';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = (Math.random() * 8 + 6) + 's'; // Entre 6s e 14s
+                heart.style.animationDelay = (Math.random() * 5) + 's';
+                heart.style.fontSize = (Math.random() * 15 + 10) + 'px';
+                heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+                
+                container.appendChild(heart);
+            }
+        }
+        createHearts();
+
+        const btnNo = document.getElementById('btn-no');
+        const btnYes = document.getElementById('btn-yes');
+        const inviteCard = document.getElementById('invite-card');
+        const successMessage = document.getElementById('success-message');
+
+        // Lógica para o botão "Não" fugir
+        function moveButton(e) {
+            if (e.type === 'touchstart') {
+                e.preventDefault();
+            }
+
+            if (btnNo.style.position !== 'fixed') {
+                btnNo.style.position = 'fixed';
+                btnNo.style.width = '100px'; 
+                btnNo.style.padding = '10px 0';
+                btnNo.style.boxShadow = '0 5px 15px rgba(0,0,0,0.3)';
+            }
+
+            const windowWidth = window.innerWidth;
+            const windowHeight = window.innerHeight;
+            const btnWidth = btnNo.offsetWidth;
+            const btnHeight = btnNo.offsetHeight;
+
+            const margin = 15;
+            const maxX = windowWidth - btnWidth - margin;
+            const maxY = windowHeight - btnHeight - margin;
+
+            const newX = Math.max(margin, Math.floor(Math.random() * maxX));
+            const newY = Math.max(margin, Math.floor(Math.random() * maxY));
+
+            btnNo.style.left = `${newX}px`;
+            btnNo.style.top = `${newY}px`;
+        }
+
+        btnNo.addEventListener('mouseover', moveButton);
+        btnNo.addEventListener('touchstart', moveButton);
+        btnNo.addEventListener('click', (e) => {
+            e.preventDefault();
+            moveButton(e);
+        });
+
+        // Lógica para o botão "Sim"
+        btnYes.addEventListener('click', () => {
+            btnNo.style.display = 'none';
+            inviteCard.style.opacity = '0';
+            
+            setTimeout(() => {
+                inviteCard.classList.add('hidden');
+                successMessage.classList.remove('hidden');
+                
+                setTimeout(() => {
+                    successMessage.style.opacity = '1';
+                }, 50);
+            }, 700); 
+        });
+    </script>
+</body>
+</html>
